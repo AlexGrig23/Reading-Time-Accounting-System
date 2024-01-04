@@ -92,21 +92,21 @@ cd rtas_backend (root)
 ```
 
 ```shell
-docker exec -it rtas_backend-web-1 bin/bash
+docker exec -it rtas_backend-web-1 /bin/bash
 ```
 Run pytest coverage in docker container for all directories where the code is covered with tests
-```shell
+
 pytest --cov=auth_api --cov=library --cov=statistic
-```
 
 Or you can just run the test command in the container
-```shell
+
 pytest
-```
+
 ## Notes
 
 - the .env file was added to the main project files, although this is considered bad practice, but since the project is of a test nature, it made it a little easier to launch
-- the time interval for celery beats is used in seconds so that it is guaranteed to be executed once a day without additional UTS settings
+- the time interval for celery beats is used in seconds so that it is guaranteed to be executed once a day without additional time zone settings
+- sometimes, for various reasons such as RAM being overloaded, etc., containers may not start the first time, just try the docker "compose build --no-cache" and "docker compose up" again
 
 ## Technologies
 
