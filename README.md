@@ -20,7 +20,7 @@ the duration of each session and the total reading time for each book.
 **1. Clone the repository:**
 
    ```shell
-   git clone https://github.com/AlexGrig23/test.git
+   https://github.com/AlexGrig23/Reading-Time-Accounting-System.git
    ```
 
   Create virtual env.
