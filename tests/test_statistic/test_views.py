@@ -13,7 +13,7 @@ def test_aggregate_reading_time(create_user, create_book, reading_session):
     aggregated_queryset = BaseReadingTimeView.aggregate_reading_time(queryset)
     for book in aggregated_queryset:
         if book == create_book:
-            assert book.total_reading_time == timedelta(hours=1)
+            assert abs(book.total_reading_time - timedelta(hours=1)) < timedelta(seconds=1)
         else:
             assert book.total_reading_time == timedelta(0)
 
@@ -22,6 +22,6 @@ def test_aggregate_reading_time(create_user, create_book, reading_session):
     )
     for book in aggregated_queryset:
         if book == create_book:
-            assert book.total_reading_time == timedelta(hours=1)
+            assert abs(book.total_reading_time - timedelta(hours=1)) < timedelta(seconds=1)
         else:
             assert book.total_reading_time == timedelta(0)

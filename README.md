@@ -20,7 +20,7 @@ the duration of each session and the total reading time for each book.
 **1. Clone the repository:**
 
    ```shell
-   git clone https://github.com/AlexGrig23/test.git
+   git clone https://github.com/AlexGrig23/rtas_backend.git
    ```
 
   Create virtual env.
@@ -58,16 +58,24 @@ Navigate to the project directory:
    It creates the images if they are not located locally and starts the containers and configures 
    all the connections and networking between the containers**
 
+
+   ```shell
+   docker compose up
+   ```
+Be sure to make sure that all containers are running. 
+If the containers do not rise for some reason, follow the instructions in the notes
+with the help of the command: 
+   ```shell
+    docker ps
+  ```
+    
    - rtas_backend-web-1
    - rtas_backend-redis-1
    - rtas_backend-db-1
    - rtas_backend-worker-1
    - rtas_backend-celery-beat-1
 
-   ```shell
-   docker compose up
-   ```
-   Starting development server at  http://127.0.1:8000/
+Starting development server at  http://127.0.1:8000/
   
 	
 ## Usage
@@ -104,7 +112,7 @@ Or you can just run the test command in the container
 pytest
 ```
 ## Notes
-
+- sometimes, for various reasons such as RAM being overloaded, etc., containers may not start the first time, just try the docker "compose build --no-cache" and "docker compose up" again
 - the .env file was added to the main project files, although this is considered bad practice, but since the project is of a test nature, it made it a little easier to launch
 - the time interval for celery beats is used in seconds so that it is guaranteed to be executed once a day without additional UTS settings
 
