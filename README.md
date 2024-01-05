@@ -114,7 +114,7 @@ pytest
 - sometimes, for various reasons such as RAM being overloaded, etc., containers may not start the first time, just try the docker "compose build --no-cache" and "docker compose up" again
 - the .env file was added to the main project files, although this is considered bad practice, but since the project is of a test nature, it made it a little easier to launch
 - the time interval for celery beats is used in seconds so that it is guaranteed to be executed once a day without additional time zone settings
-- sometimes, for various reasons such as RAM being overloaded, etc., containers may not start the first time, just try the docker "compose build --no-cache" and "docker compose up" again
+
 
 ## Technologies
 
