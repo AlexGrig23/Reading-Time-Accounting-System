@@ -1,3 +1,6 @@
+[![wemake-python-styleguide](https://img.shields.io/badge/style-wemake-000000.svg)](https://github.com/wemake-services/wemake-python-styleguide)
+
+
 # Reading Time Accounting System
 Web application in Django according to the technical specifications
 
@@ -7,7 +10,7 @@ Users can start and end reading sessions, and the system stores
 the duration of each session and the total reading time for each book.
 
 ## Basic Requirements
-- API for accounting for reading time
+  - API for accounting for reading time
   - View a list of books with information
   - Book details with reading statistics
   - Management of book reading sessions
@@ -80,15 +83,33 @@ Starting development server at  http://127.0.1:8000/
 	
 ## Usage
 
-**1. API Documentations**
+**1. API Usage**
+
+ **Create superuser**
+   ```shell
+   docker exec -it rtas_backend-web-1 /bin/bash
+   ```
+ 
+ - python manage.py createsuperuser
+ - login: admin
+ - email: admin@mail.com
+ - password: admin
+ - http://127.0.1:8000/admin/
+
+ **Create books**
+ - http://127.0.1:8000/admin/library/book/add/
+
+ 
+After creating a book in the admin panel, you can test all endpoints using the API
+
+**For interactive testing of the application, 
+I also recommend using the API, since testing in the admin panel can lead to unexpected results**
 
 You can familiarize yourself with the documents in detail at URL
 The documentation was created for informational purposes only, so authorization using the header is not configured. 
 To test authorization using the JWT token, you can use the terminal and CURL or Postman or any other convenient tool
  http://127.0.1:8000/swagger/
 
-**For interactive testing of the application, 
-I also recommend using the API, since testing in the admin panel can lead to unexpected results**
 
 
 ## Testing
@@ -104,30 +125,31 @@ docker exec -it rtas_backend-web-1 /bin/bash
 ```
 Run pytest coverage in docker container for all directories where the code is covered with tests
 
-pytest --cov=auth_api --cov=library --cov=statistic
+ - pytest --cov=auth_api --cov=library --cov=statistic
 
 Or you can just run the test command in the container
 
-pytest
+ - pytest
 
 ## Notes
-- sometimes, for various reasons such as RAM being overloaded, etc., containers may not start the first time, just try the docker "compose build --no-cache" and "docker compose up" again
+- sometimes for various reasons, for example, due to RAM overload, bad connection, etc., containers may not start the first time, just try the docker "compose build --no-cache" and "docker compose up" again
+- if all identical images are created, then you just need to stopped container use CTRL+C and repeat the command "docker compose up"
 - the .env file was added to the main project files, although this is considered bad practice, but since the project is of a test nature, it made it a little easier to launch
-- the time interval for celery beats is used in seconds so that it is guaranteed to be executed once a day without additional time zone settings
+- the project is not configured for production, but only for development
 
 
 ## Technologies
 
-- Python 3.11
-- Django REST Framework 3.14.0
-- Docker 
-- Docker-compose
-- PostgreSQL
-- Redis
-- Celery
-- Swagger
-- Pytest
-- Coverage
+ - Python 3.11
+ - Django REST Framework 3.14.0
+ - Docker 
+ - Docker-compose
+ - PostgreSQL
+ - Redis
+ - Celery
+ - Swagger
+ - Pytest
+ - Coverage
 
 ## License
 MIT License
